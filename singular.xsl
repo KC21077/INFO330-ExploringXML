@@ -3,7 +3,7 @@
 
 <!-- The result of this stylesheet should be 384 Pokemon -->
 <!-- "Find all Pokemon that have a type of "fire", "water", "flying", or "ground" -->
-<!-- SELECT COUNT(*) FROM pokemon_types_view 
+<!-- SELECT COUNT(*) FROM pokemon_types_view
      WHERE type2 = ''; = 384 Pokemon -->
 
 <!-- This generates a comma-separated list for the Pokemon types; 'grass, poison' or 'normal' -->
@@ -19,13 +19,13 @@
   formatted HTML file.
   -->
 <xsl:template match="/pokedex">
-Single type pokemon: <xsl:value-of select="XPATH-QUERY-GOES-HERE" />:
+Single type pokemon: <xsl:value-of select="count(pokemon[count(type) = 1])" />:
 
-<xsl:apply-templates select="XPATH-QUERY-GOES-HERE" />
+<xsl:apply-templates select="pokemon[count(type) = 1]" />
 </xsl:template>
 
 <xsl:template match="pokemon">
-    <xsl:value-of select="XPATH-QUERY-GOES-HERE" /> (<xsl:value-of select="XPATH-QUERY-GOES-HERE" />): <xsl:value-of select="XPATH-QUERY-GOES-HERE" /> | <xsl:value-of select="XPATH-QUERY-GOES-HERE" /> |
+    <xsl:value-of select="name" /> (<xsl:value-of select="@pokedexNumber" />): <xsl:value-of select="@classification" /> | <xsl:value-of select="type" /> |
 </xsl:template>
 
 <!--
